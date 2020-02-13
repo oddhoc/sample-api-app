@@ -1,15 +1,28 @@
 ---
 version: 2.1
 orbs:
-  ruby: circleci/ruby@0.1.2 
+  ruby: circleci/ruby@0.2.1 
 
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/ruby:2.7-buster-node
+      - image: postgres:12.1-alpine
+        name: db
+        environment:
+          POSTGRES_PASSWORD: sekrit
     steps:
       - checkout
-      - run:
-          name: Which bundler?
-          command: bundle -v
+      - ruby/load-cache
       - ruby/bundle-install
+      - run: 
+          command: bundle exec rake test
+          environment:
+            RAILS_ENV: test
+            DATABASE_URL: postgres://postgres:sekrit@db/sample_api_app_test
+      - ruby/save-cache
+
+workflows:
+  build:
+    jobs:
+      - test
