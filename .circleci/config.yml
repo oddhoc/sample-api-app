@@ -15,7 +15,14 @@ jobs:
       - checkout
       - ruby/load-cache
       - ruby/install-deps
-      - run: 
+      - run:
+          name: setup database
+          command: bundle exec rake db:create db:migrate
+          environment:
+            RAILS_ENV: test
+            DATABASE_URL: postgres://postgres:sekrit@db/sample_api_app_test
+      - run:
+          name: run tests
           command: bundle exec rake test
           environment:
             RAILS_ENV: test
