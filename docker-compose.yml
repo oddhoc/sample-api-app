@@ -1,0 +1,32 @@
+---
+version: '3.4'
+services:
+  db:
+    image: postgres:12.1-alpine
+    environment:
+      POSTGRES_PASSWORD: sekrit
+  web:
+    build:
+      context: .
+    command:
+      - bundle
+      - exec
+      - foreman
+      - start
+    # see .env for default settings on blank vars for override
+    environment:
+      PORT:
+      RAILS_ENV:
+      DATABASE_URL: postgres://postgres:sekrit@db/sample_api_app_${RAILS_ENV}
+      # this is a ruby 2.7 ism, remove when active record catches up
+      # https://stackoverflow.com/questions/59491848/how-to-fix-railss-warning-messages-with-ruby-2-7-0
+      RUBYOPT: -W:no-deprecated -W:no-experimental
+    ports:
+      - ${PORT}:${PORT}
+      - 9394:9394
+    volumes:
+      - .:/workspace:cached
+    depends_on:
+      - db
+    links:
+      - db
