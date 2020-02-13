@@ -51,7 +51,7 @@ jobs:
           command: echo ${QUAY_PASSWORD} | docker login -u ${QUAY_USERNAME} --password-stdin quay.io
       - run:
           name: build deployable image
-          command: ./cache/pack build quay.io/oddhoc/sample-api-app:${CIRCLE_SHA} --publish --builder heroku/buildpacks:18
+          command: ./cache/pack build quay.io/oddhoc/sample-api-app:${CIRCLE_SHA1} --publish --builder heroku/buildpacks:18
       - save_cache:
           key: v1-buildpack-0.8.1
           paths:
