@@ -29,7 +29,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rails-healthcheck', '~> 1.1.2'
 
 # Prom support
-gem 'prometheus_exporter', '~> 0.4.13'
+gem 'prometheus_exporter', '~> 0.5.0'
 
 # Use foreman for process management
 gem 'foreman', '~> 0.87.0'
