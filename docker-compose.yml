@@ -13,7 +13,7 @@ services:
       - exec
       - foreman
       - start
-    # see .env for default settings on blank vars for override
+    # set PORT and RAILS_ENV in shell to get these to propagate 
     environment:
       PORT:
       RAILS_ENV:
@@ -22,10 +22,10 @@ services:
       # https://stackoverflow.com/questions/59491848/how-to-fix-railss-warning-messages-with-ruby-2-7-0
       RUBYOPT: -W:no-deprecated -W:no-experimental
     ports:
-      - ${PORT}:${PORT}
+      - 3000:3000
       - 9394:9394
     volumes:
-      - .:/workspace:cached
+      - .:/workspace:delegated
     depends_on:
       - db
     links:
