@@ -1,11 +1,16 @@
 #! /bin/bash
 export RAILS_ENV=development
+export PORT=3000
 
-if [ "$1" == "up" ] ; then
-    docker-compose up --build -d
-    docker-compose exec web rake db:create db:migrate
-elif [ "$1" == "sh" ] ; then
-    docker-compose exec web sh
-else
-    docker-compose "$@"
-fi
+case "$1" in
+    "up")
+        docker-compose up --build -d
+        docker-compose exec web rake db:create db:migrate
+    ;;
+    "sh")
+        docker-compose exec web sh
+    ;;
+    *)
+         docker-compose "$@"
+    ;;
+esac
