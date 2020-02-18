@@ -2,7 +2,7 @@
 
 curl --user "${GITHUB_USER}:${GITHUB_TOKEN}" -sSL -X POST -d '
 {
-  "description": "triggered via circleci"
+  "description": "triggered via circleci",
   "ref": "refs/heads/master",
   "payload": {
     "do": "it"
