@@ -57,7 +57,14 @@ jobs:
           paths:
             - cache
   # release:
-  # deploy:
+  deploy:
+    docker:
+      - image: circleci/ruby:2.7-buster-node
+    steps:
+      - checkout
+      - deploy:
+          name: create github deployment
+          command: ./bin/create-gh-deployment.sh
 
 workflows:
   version: 2
@@ -78,10 +85,10 @@ workflows:
       #       branches:
       #         only:
       #           - master
-      # - deploy:
-      #     requires:
-      #       - release
-      #     filters:
-      #       branches:
-      #         only:
-      #           - master
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
