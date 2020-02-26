@@ -26,7 +26,7 @@ gem 'puma', '~> 4.1'
 gem 'rails-healthcheck', '~> 1.1.3'
 
 # Prom support
-gem 'prometheus_exporter', '~> 0.5.0'
+gem 'prometheus_exporter', '~> 0.5.1'
 
 # Use foreman for process management
 gem 'foreman', '~> 0.87.0'
