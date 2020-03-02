@@ -42,6 +42,7 @@ job "sample-api-app-service" {
             service {
                 name = "sample-api-app-service"
                 port = "app"
+                tags = [ "urlprefix-/users" ]
                 check {
                     name = "app healthcheck"
                     type = "http"
