@@ -35,16 +35,16 @@ jobs:
       - setup_remote_docker
       - checkout
       - restore_cache:
-          key: v1-buildpack-0.8.1
+          key: v1-buildpack-0.10.1
       - run:
           name: install pack from buildpacks.io
           command: |
             if [ ! -f cache/pack ] ; then
               mkdir cache
               cd cache
-              wget https://github.com/buildpacks/pack/releases/download/v0.8.1/pack-v0.8.1-linux.tgz
-              tar xvf pack-v0.8.1-linux.tgz
-              rm pack-v0.8.1-linux.tgz
+              wget https://github.com/buildpacks/pack/releases/download/v0.10.0/pack-v0.10.0-linux.tgz
+              tar xvf pack-v0.10.0-linux.tgz
+              rm pack-v0.10.0-linux.tgz
             fi
       - run:
           name: login to quay
@@ -53,7 +53,7 @@ jobs:
           name: build deployable image
           command: ./cache/pack build quay.io/oddhoc/sample-api-app:${CIRCLE_SHA1} --publish --builder heroku/buildpacks:18
       - save_cache:
-          key: v1-buildpack-0.8.1
+          key: v1-buildpack-0.10.0
           paths:
             - cache
   # release:
