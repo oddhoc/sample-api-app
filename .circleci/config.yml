@@ -6,7 +6,7 @@ orbs:
 jobs:
   test:
     docker:
-      - image: circleci/ruby:2.7-buster-node
+      - image: circleci/ruby:2.7.1-buster-node
       - image: postgres:12.1-alpine
         name: db
         environment:
@@ -30,7 +30,7 @@ jobs:
       - ruby/save-cache
   build:
     docker:
-      - image: circleci/ruby:2.7-buster-node
+      - image: circleci/ruby:2.7.1-buster-node
     steps:
       - setup_remote_docker
       - checkout
@@ -59,7 +59,7 @@ jobs:
   # release:
   deploy:
     docker:
-      - image: circleci/ruby:2.7-buster-node
+      - image: circleci/ruby:2.7.1-buster-node
     steps:
       - checkout
       - deploy:
