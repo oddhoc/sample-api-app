@@ -29,7 +29,7 @@ gem 'rails-healthcheck', '~> 1.1.5'
 gem 'prometheus_exporter', '~> 0.5.1'
 
 # Use foreman for process management
-gem 'foreman', '~> 0.87.1'
+gem 'foreman', '~> 0.87.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
