@@ -23,7 +23,7 @@ gem 'puma', '~> 4.3'
 # gem 'rack-cors'
 
 # Healthcheck endppint for service discovery
-gem 'rails-healthcheck', '~> 1.1.5'
+gem 'rails-healthcheck', '~> 1.2.0'
 
 # Prom support
 gem 'prometheus_exporter', '~> 0.5.1'
