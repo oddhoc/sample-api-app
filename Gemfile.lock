@@ -89,7 +89,7 @@ GEM
     prometheus_exporter (0.5.1)
     puma (4.3.5)
       nio4r (~> 2.0)
-    rack (2.2.3)
+    rack (2.2.6.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.0.3.2)
